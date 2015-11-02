@@ -16,10 +16,10 @@ module Universe
         end
        if count < 2
             false
-          else
-            true
-          end
-        end
+       elsif count == 2 || count == 3
+         true
+       end
       end
+    end
   end
 end
