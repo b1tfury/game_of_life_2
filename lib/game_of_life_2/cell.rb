@@ -13,5 +13,13 @@ module Universe
         false
       end
     end
+
+    def is_dead?
+      if @state == 'DEAD'
+        true
+      else
+        false
+      end
+    end
   end
 end
