@@ -50,6 +50,10 @@ module Universe
       end
     end
 
+    def hash
+      [self.position, self.state, self.generation].hash
+    end
+
     def ==(other)
       if other.is_a?(self.class) && other.class != nil.class
         self.position == other.position && self.generation == self.generation && self.state == other.state

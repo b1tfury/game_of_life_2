@@ -74,5 +74,13 @@ module Universe
         expect(Cell.new(1, 2, ALIVE, generation)).not_to eq(Cell.new(1, 2, DEAD, generation))
       end
     end
+
+    context 'hash' do
+      it 'equal cells must have same hash' do
+        cellA = Cell.new(1, 2, ALIVE, generation)
+        cellB = Cell.new(1, 2, ALIVE, generation)
+        expect(cellA.hash).to eq(cellB.hash)
+      end
+    end
   end
 end
