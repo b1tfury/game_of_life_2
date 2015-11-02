@@ -50,5 +50,11 @@ module Universe
         expect(Cell.new(1, 2, ALIVE, generation).neighbours).to match_array(neighbours)
       end
     end
+
+    context 'comparing two cells' do
+      it 'if posotion ,state and generation is same then cells are equal' do
+        expect(Cell.new(1, 2, ALIVE, generation)).to eq(Cell.new(1, 2, ALIVE, generation))
+      end
+    end
   end
 end

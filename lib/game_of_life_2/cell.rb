@@ -1,5 +1,6 @@
 module Universe
   class Cell
+    attr_reader :generation
     ALIVE = 'ALIVE'
     DEAD = 'DEAD'
     def initialize(x, y, state,generation)
@@ -47,6 +48,9 @@ module Universe
       else
         false
       end
+    end
+    def ==(other)
+      self.position == other.position && self.generation == self.generation
     end
   end
 end
