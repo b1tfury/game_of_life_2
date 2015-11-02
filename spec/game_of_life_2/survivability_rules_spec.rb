@@ -14,6 +14,12 @@ module Universe
         generations = Generations.new([[0, -1],[0, 0],[0, 1]])
         expect(SurvivabilityRules.new(cell,generations).will_live?).to eq(true)
       end
+
+      it 'will die if more than if more than 3 neighbours are alive' do
+        cell = Cell.new(0, 0, 'ALIVE')
+        generations = Generations.new([[0, -1],[0, 0],[0, 1],[-1, 0],[1, 0]])
+        expect(SurvivabilityRules.new(cell,generations).will_live?).to eq(false)
+      end
     end
   end
 end
