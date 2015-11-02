@@ -6,6 +6,7 @@ module Universe
       @x = x
       @y = y
       @state = state
+      @neighbours = []
     end
 
     def position
@@ -13,7 +14,15 @@ module Universe
     end
 
     def neighbours
-      [[0, 3],[1, 3],[2, 3],[2, 2],[2, 1],[1, 1],[0, 1],[0, 2]]
+      range = [-1, 0, 1]
+      range.each do |x|
+        range.each do |y|
+          if !(x == y && x == 0)
+            @neighbours << [@x + x, @y + y]
+          end
+        end
+      end
+      @neighbours
     end
 
     def is_alive?
