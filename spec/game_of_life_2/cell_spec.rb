@@ -18,6 +18,10 @@ module Universe
       it 'dead' do
         expect(Cell.new(DEAD).is_dead?).to eq(true)
       end
+
+      it 'not alive' do
+        expect(Cell.new(DEAD).is_dead?).not_to eq(false)
+      end
     end
   end
 end
