@@ -49,8 +49,13 @@ module Universe
         false
       end
     end
+
     def ==(other)
-      self.position == other.position && self.generation == self.generation
+      if other.is_a?(self.class)
+        self.position == other.position && self.generation == self.generation
+      else
+        false
+      end
     end
   end
 end

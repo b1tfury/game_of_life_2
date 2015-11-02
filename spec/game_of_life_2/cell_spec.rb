@@ -55,6 +55,10 @@ module Universe
       it 'if posotion ,state and generation is same then cells are equal' do
         expect(Cell.new(1, 2, ALIVE, generation)).to eq(Cell.new(1, 2, ALIVE, generation))
       end
+
+      it 'cell should be compared with another cell only' do
+        expect(Cell.new(1, 2, ALIVE, generation)).not_to eq(Object.new)
+      end
     end
   end
 end
