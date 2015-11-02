@@ -2,11 +2,11 @@ module Universe
   class Cell
     ALIVE = 'ALIVE'
     DEAD = 'DEAD'
-    def initialize(x, y, state)
+    def initialize(x, y, state,generation)
       @x = x
       @y = y
       @state = state
-      @neighbours = []
+      @generation = generation
     end
 
     def position
@@ -14,15 +14,23 @@ module Universe
     end
 
     def neighbours
+      neighbours = []
+      live_cells = @generation.current_generation
       range = [-1, 0, 1]
       range.each do |x|
         range.each do |y|
+          cell = Cell.new(@x + x, @y + y, ALIVE, @generation)
           if !(x == y && x == 0)
-            @neighbours << [@x + x, @y + y]
+            if live_cells.include? cell
+              neighbours << cell
+            else
+              cell = Cell.new(@x + x, @y + y, DEAD, @generation)
+              cell << cell
+            end
           end
         end
       end
-      @neighbours
+      neighbours
     end
 
     def is_alive?
