@@ -12,6 +12,10 @@ module Universe
       [@x,@y]
     end
 
+    def neighbours
+      [[0, 3],[1, 3],[2, 3],[2, 2],[2, 1],[1, 1],[0, 1],[0, 2]]
+    end
+
     def is_alive?
       if @state == 'ALIVE'
         true
