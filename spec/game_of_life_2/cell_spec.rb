@@ -31,7 +31,23 @@ module Universe
       end
 
       it 'eight neighbours' do
-        expect(Cell.new(1, 2, ALIVE, generation).neighbours).to match_array([[0, 3],[1, 3],[2, 3],[2, 2],[2, 1],[1, 1],[0, 1],[0, 2]])
+        neighbours = []
+        live_cells = generation.current_generation
+        range = [-1, 0, 1]
+        range.each do |x|
+          range.each do |y|
+            cell = Cell.new(1 + x, 2 + y, ALIVE, generation)
+            if !(x == y && x == 0)
+              if live_cells.include? cell
+                neighbours << cell
+              else
+                cell = Cell.new(1 + x, 2 + y, DEAD, generation)
+                neighbours << cell
+              end
+            end
+          end
+        end
+        expect(Cell.new(1, 2, ALIVE, generation).neighbours).to match_array(neighbours)
       end
     end
   end
