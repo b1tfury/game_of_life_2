@@ -21,5 +21,13 @@ module Universe
         expect(SurvivabilityRules.new(cell,generations).will_live?).to eq(false)
       end
     end
+
+    context 'Dead cell' do
+      it 'becomes alive if 3 neighbours are alive' do
+        cell = Cell.new(1, 1, 'DEAD')
+        generations = Generations.new([[1, 0],[0, 0],[0, 1]])
+        expect(SurvivabilityRules.new(cell,generations).will_live?).to eq(true)
+      end
+    end
   end
 end
