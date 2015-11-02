@@ -63,6 +63,12 @@ module Universe
       it 'comparison with nil' do
         expect(Cell.new(1, 2, ALIVE, generation)).not_to eq(nil)
       end
+
+      it 'cellA = cellB , then cellB = cellA ' do
+        cellA = Cell.new(1, 2, ALIVE, generation)
+        cellB = Cell.new(1, 2, ALIVE, generation)
+        expect(cellA == cellB).to eq(cellB == cellA)
+      end
     end
   end
 end
