@@ -59,6 +59,10 @@ module Universe
       it 'cell should be compared with another cell only' do
         expect(Cell.new(1, 2, ALIVE, generation)).not_to eq(Object.new)
       end
+
+      it 'comparison with nil' do
+        expect(Cell.new(1, 2, ALIVE, generation)).not_to eq(nil)
+      end
     end
   end
 end
