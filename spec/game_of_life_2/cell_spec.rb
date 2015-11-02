@@ -69,6 +69,10 @@ module Universe
         cellB = Cell.new(1, 2, ALIVE, generation)
         expect(cellA == cellB).to eq(cellB == cellA)
       end
+
+      it 'unequal cells ' do
+        expect(Cell.new(1, 2, ALIVE, generation)).not_to eq(Cell.new(1, 2, DEAD, generation))
+      end
     end
   end
 end
