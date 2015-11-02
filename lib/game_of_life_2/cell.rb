@@ -25,7 +25,7 @@ module Universe
               neighbours << cell
             else
               cell = Cell.new(@x + x, @y + y, DEAD, @generation)
-              cell << cell
+              neighbours << cell
             end
           end
         end
