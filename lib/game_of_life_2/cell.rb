@@ -2,8 +2,14 @@ module Universe
   class Cell
     ALIVE = 'ALIVE'
     DEAD = 'DEAD'
-    def initialize(state)
+    def initialize(x, y, state)
+      @x = x
+      @y = y
       @state = state
+    end
+
+    def position
+      [@x,@y]
     end
 
     def is_alive?
