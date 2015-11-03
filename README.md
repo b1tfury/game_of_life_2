@@ -13,9 +13,9 @@ The universe of the Game of Life is an infinite two-dimensional orthogonal grid 
 The initial pattern constitutes the seed of the system. The first generation is created by applying the above rules simultaneously to every cell in the seed—births and deaths occur simultaneously, and the discrete moment at which this happens is sometimes called a tick (in other words, each generation is a pure function of the preceding one). The rules continue to be applied repeatedly to create further generations.
 
 
-# Dev Enironment Setup
+# Dev Environment Setup
 
-1. This porject was build and tested on OS X El Capitan
+1. This project was build and tested on OS X El Capitan
 
 2. Ruby version - 2.2.2 
 
@@ -32,7 +32,7 @@ bundle install
 For running all the tests of the project run the following command :
 
 ```ruby
-bundle exec rspec
+bundle exec rake
 ```
 
 

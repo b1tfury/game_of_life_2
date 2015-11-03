@@ -4,7 +4,10 @@ module Universe
   describe Cell do
     ALIVE = 'ALIVE'
     DEAD = 'DEAD'
-    generation = Generations.new([[0, 0],[1, 0],[-1, 0]])
+    generation = Generations.new(1)
+    cells = [Cell.new(0, 0, ALIVE, generation), Cell.new(1, 0, ALIVE, generation), Cell.new(-1, 0, ALIVE, generation)]
+    generation.current_generation = cells
+
     context 'Alive Cell says I am ' do
       it 'alive' do
         expect(Cell.new(1, 2, ALIVE, generation).is_alive?).to eq(true)
@@ -56,7 +59,7 @@ module Universe
         expect(Cell.new(1, 2, ALIVE, generation)).to eq(Cell.new(1, 2, ALIVE, generation))
       end
 
-      it 'cell should be compared with another cell only' do
+      it 'cell should never be equal to something that is not a cell' do
         expect(Cell.new(1, 2, ALIVE, generation)).not_to eq(Object.new)
       end
 

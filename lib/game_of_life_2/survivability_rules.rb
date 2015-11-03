@@ -1,18 +1,19 @@
 module Universe
   class SurvivabilityRules
-    def initialize(cell, generations)
+    def initialize(cell)
       @cell = cell
-      @generation = generations.current_generation
+      @live_cells = cell.generation.current_generation
     end
 
     def will_live?
       neigbours = @cell.neighbours
       count = 0
       neigbours.each do |cell|
-        if @generation.include?(cell)
+        if @live_cells.include?(cell)
           count += 1
         end
       end
+
       if @cell.is_alive?
        if count < 2
             false

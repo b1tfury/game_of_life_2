@@ -1,7 +1,7 @@
 module Universe
   class Cell
     attr_reader :generation, :state
-    ALIVE = 'ALIVE'
+    ALIVE = 'FOO'
     DEAD = 'DEAD'
     def initialize(x, y, state,generation)
       @x = x
@@ -22,7 +22,7 @@ module Universe
         range.each do |y|
           cell = Cell.new(@x + x, @y + y, ALIVE, @generation)
           if !(x == y && x == 0)
-            if live_cells.include? cell
+            if live_cells.include?(cell)
               neighbours << cell
             else
               cell = Cell.new(@x + x, @y + y, DEAD, @generation)
@@ -35,28 +35,20 @@ module Universe
     end
 
     def is_alive?
-      if @state == 'ALIVE'
-        true
-      else
-        false
-      end
+      @state == 'ALIVE'
     end
 
     def is_dead?
-      if @state == 'DEAD'
-        true
-      else
-        false
-      end
+      @state == 'DEAD'
     end
 
     def hash
-      [self.position, self.state, self.generation].hash
+      [self.position, self.state, self.generation.number].hash
     end
 
     def ==(other)
       if other.is_a?(self.class) && other.class != nil.class
-        self.position == other.position && self.generation == self.generation && self.state == other.state
+        self.position == other.position && self.generation.number == other.generation.number && self.state == other.state
       else
         false
       end
